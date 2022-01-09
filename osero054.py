@@ -1,4 +1,3 @@
-
 #
 # オセロ（リバーシ） 6x6
 #
@@ -8,7 +7,7 @@ N = 6  # 大きさ
 EMPTY = 0  # 空
 BLACK = 1  # 黒
 WHITE = 2  # 白
-STONE = ['□', '●', '○']  #石の文字
+STONE = ['🟩', '⚫', '⚪'] #STONE = ['□', '●', '○']  #石の文字
 
 #
 # board = [0] * (N*N)
@@ -129,9 +128,26 @@ def game(player1, player2):
 	show_board(board)  # 最後の結果を表示!
 
 # AI 用のインターフェース
-  
-def my_AI(board, color): #おチビちゃんAI
-  for position in range(N*N):
+
+board = init_board()
+show_board(board)
+
+YUSEN2=[0,5,30,35,2,3,17,23,12,18,32,33,9,16,8,15,22,14,21,13,20,27,19,26,4,11,1,29,6,34,24,31,10,7,28,25]
+def my_AI2(board, color): #おチビちゃんAI
+  for i in range(N*N):
+    position =YUSEN2[i]
     if put_and_reverse(board, position, color):
       return position
   return 0
+
+YUSEN=[0,5,30,35,2,3,12,17,18,23,32,33,8,9,13,14,15,16,19,20,21,22,26,27,1,4,6,11,24,29,31,34,7,10,25,28]
+def my_AI(board, color): #おチビちゃんAI
+  for i in range(N*N):
+    position =YUSEN[i]
+    if put_and_reverse(board, position, color):
+      return position
+  return 0
+
+
+
+game(my_AI2, random_AI) 
