@@ -148,6 +148,6 @@ def my_AI2(board, color): #おチビちゃんAI
      # return position
   #return 0
 
-
+	
 
 #game(my_AI2, random_AI) 
