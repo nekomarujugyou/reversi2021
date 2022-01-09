@@ -140,14 +140,14 @@ def my_AI2(board, color): #おチビちゃんAI
       return position
   return 0
 
-YUSEN=[0,5,30,35,2,3,12,17,18,23,32,33,8,9,13,14,15,16,19,20,21,22,26,27,1,4,6,11,24,29,31,34,7,10,25,28]
-def my_AI(board, color): #おチビちゃんAI
-  for i in range(N*N):
-    position =YUSEN[i]
-    if put_and_reverse(board, position, color):
-      return position
-  return 0
+#YUSEN=[0,5,30,35,2,3,12,17,18,23,32,33,8,9,13,14,15,16,19,20,21,22,26,27,1,4,6,11,24,29,31,34,7,10,25,28]
+#def my_AI(board, color): #おチビちゃんAI
+  #for i in range(N*N):
+   # position =YUSEN[i]
+    #if put_and_reverse(board, position, color):
+     # return position
+  #return 0
 
 
 
-game(my_AI2, random_AI) 
+#game(my_AI2, random_AI) 
