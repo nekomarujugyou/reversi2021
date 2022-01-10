@@ -130,7 +130,7 @@ def game(player1, player2):
 
 # AI 用のインターフェース
   
-def my_AI(board, color): #おチビちゃんAI
+def my_AI(board, color): #おチビちゃんAI!!
   for position in range(N*N):
     if put_and_reverse(board, position, color):
       return position
