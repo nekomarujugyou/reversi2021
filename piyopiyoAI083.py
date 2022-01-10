@@ -135,3 +135,10 @@ def my_AI(board, color): #おチビちゃんAI
     if put_and_reverse(board, position, color):
       return position
   return 0
+
+list=[0,5,30,35,2,3,12,17,18,23,32,33,1,4,6,11,24,29,31,34,8,9,13,16,19,22,26,27,7,10,25,28] #評価表をもとにリスト化
+def piyopiyo_AI(board, color):
+  for position in list:   
+    if put_and_reverse(board, position, color):
+      return position
+  return 0
