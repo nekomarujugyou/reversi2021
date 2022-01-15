@@ -175,4 +175,4 @@ def marin_AI(board, color):
     position = random.randint(0, N*N-1)
     if put_and_reverse(board[:], position, color):
       return position ## おく位置を決めて返す
-  return 01
+  return 0
