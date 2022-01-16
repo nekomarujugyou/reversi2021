@@ -137,3 +137,68 @@ def my_AI(board, color): #おチビちゃんAI
       return position
   return 0
 #ここを編集しましょうね^^
+
+import random
+
+def Pine_AI(board,color):
+  CanPutlist=[]
+  for position in range(N*N):
+    if put_and_reverse(board, position, color):
+      CanPutlist.append(position)
+
+  #優先度最高
+  list1 = []
+  if 0 or 5 or 30 or 35 in CanPutlist:
+    if 0 in oklist:list1.append(0)
+    if 5 in oklist:list1.append(5)
+    if 30 in oklist:list1.append(30)
+    if 35 in oklist:list1.append(35)
+    return(random.choice(list1))
+
+  #優先度2番目
+  elif 2 or 3 or 12 or 17 or 18 or 23 or 32 or 33 in CanPutlist:
+    if 2 in oklist:list1.append(2)
+    if 3 in oklist:list1.append(3)
+    if 12 in oklist:list1.append(12)
+    if 17 in oklist:list1.append(17)
+    if 18 in oklist:list1.append(18)
+    if 23 in oklist:list1.append(23)
+    if 32 in oklist:list1.append(32)
+    if 33 in oklist:list1.append(33)
+    return(random.choice(list1))
+
+  #優先度3番目
+  elif 8 or 9 or 13 or 16 or 19 or 22 or 26 or 27 in CanPutlist:
+    if 8 in oklist:list1.append(8)
+    if 9 in oklist:list1.append(9)
+    if 13 in oklist:list1.append(13)
+    if 16 in oklist:list1.append(16)
+    if 19 in oklist:list1.append(19)
+    if 22 in oklist:list1.append(22)
+    if 26 in oklist:list1.append(26)
+    if 27 in oklist:list1.append(27)
+    return(random.choice(list1))
+
+  #優先度4番目
+  elif 1 or 4 or 6 or 11 or 24 or 29 or 31 or 34 in CanPutlist:
+    if 1 in oklist:list1.append(1)
+    if 4 in oklist:list1.append(4)
+    if 6 in oklist:list1.append(6)
+    if 11 in oklist:list1.append(11)
+    if 24 in oklist:list1.append(24)
+    if 29 in oklist:list1.append(29)
+    if 31 in oklist:list1.append(31)
+    if 34 in oklist:list1.append(34)
+    return(random.choice(list1))
+
+  #優先度最高
+  else:
+    if 7 in oklist:list1.append(7)
+    if 10 in oklist:list1.append(10)
+    if 25 in oklist:list1.append(25)
+    if 28 in oklist:list1.append(28)
+    return(random.choice(list1))
+  
+  return 0
+
+#まあfor文で繰り返し書いたほうが楽だなあとは思ったのですが...
