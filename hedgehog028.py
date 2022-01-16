@@ -138,107 +138,178 @@ def hedgehog028_AI(board,color):
   D = {7:0, 10:0, 25:0, 28:0}
 
   for i in S.keys():
-    if i - 1 != EMPTY:
-      S[i] += 1
-    if i + 1 != EMPTY:
-      S[i] += 1
-    if i - 6 != EMPTY:
-      S[i] += 1
-    if i + 6 != EMPTY:
-      S[i] += 1
-    if i - 5 != EMPTY:
-      S[i] += 1
-    if i + 5 != EMPTY:
-      S[i] += 1
-    if i - 7 != EMPTY:
-      S[i] += 1
-    if i + 7 != EMPTY:
-      S[i] += 1
-  SS = sorted(S.items(), key=lambda x:x[1])
+    S[i] += 5
+    if i == 0:
+      if board[i+1] != EMPTY:
+        S[i] += 1
+      if board[i+6] != EMPTY:
+        S[i] += 1
+      if board[i+7] != EMPTY:
+        S[i] += 1
+    if i == 5:
+      if board[i-1] != EMPTY:
+        S[i] += 1
+      if board[i+5] != EMPTY:
+        S[i] += 1
+      if board[i+6] != EMPTY:
+        S[i] += 1
+    if i == 30:
+      if board[i+1] != EMPTY:
+        S[i] += 1
+      if board[i-5] != EMPTY:
+        S[i] += 1
+      if board[i-6] != EMPTY:
+        S[i] += 1
+    if i == 35:
+      if board[i-1] != EMPTY:
+        S[i] += 1
+      if board[i-6] != EMPTY:
+        S[i] += 1
+      if board[i-7] != EMPTY:
+        S[i] += 1
+  SS = sorted(S.items(), key=lambda x:-x[1])
   SSS = dict((x, y) for x, y in SS)
   SSS = list(SSS.keys())
   
   for i in A.keys():
-    if i - 1 != EMPTY:
-      A[i] += 1
-    if i + 1 != EMPTY:
-      A[i] += 1
-    if i - 6 != EMPTY:
-      A[i] += 1
-    if i + 6 != EMPTY:
-      A[i] += 1
-    if i - 5 != EMPTY:
-      A[i] += 1
-    if i + 5 != EMPTY:
-      A[i] += 1
-    if i - 7 != EMPTY:
-      A[i] += 1
-    if i + 7 != EMPTY:
-      A[i] += 1
-    AA = sorted(A.items(), key=lambda x:x[1])
-    AAA = dict((x, y) for x, y in AA)
-    AAA = list(AAA.keys())    
+    A[i] += 3
+    if i == 2 or i == 3:
+      if board[i-1] != EMPTY:
+        A[i] += 1
+      if board[i+1] != EMPTY:
+        A[i] += 1
+      if board[i+5] != EMPTY:
+        A[i] += 1
+      if board[i+6] != EMPTY:
+        A[i] += 1
+      if board[i+7] != EMPTY:
+        A[i] += 1
+    if i == 12 or i == 18:
+      if board[i-6] != EMPTY:
+        A[i] += 1
+      if board[i-5] != EMPTY:
+        A[i] += 1
+      if board[i+1] != EMPTY:
+        A[i] += 1
+      if board[i+6] != EMPTY:
+        A[i] += 1
+      if board[i+7] != EMPTY:
+        A[i] += 1
+    if i == 17 or i == 23:
+      if board[i-7] != EMPTY:
+        A[i] += 1
+      if board[i-6] != EMPTY:
+        A[i] += 1
+      if board[i-1] != EMPTY:
+        A[i] += 1
+      if board[i+5] != EMPTY:
+        A[i] += 1
+      if board[i+6] != EMPTY:
+        A[i] += 1
+    if i == 32 or i == 33:
+      if board[i-7] != EMPTY:
+        A[i] += 1
+      if board[i-6] != EMPTY:
+        A[i] += 1
+      if board[i-5] != EMPTY:
+        A[i] += 1
+      if board[i-1] != EMPTY:
+        A[i] += 1
+      if board[i+1] != EMPTY:
+        A[i] += 1
+  AA = sorted(A.items(), key=lambda x:-x[1])
+  AAA = dict((x, y) for x, y in AA)
+  AAA = list(AAA.keys())    
 
   for i in B.keys():
-    if i - 1 != EMPTY:
+    if board[i-1] != EMPTY:
       B[i] += 1
-    if i + 1 != EMPTY:
+    if board[i+1] != EMPTY:
       B[i] += 1
-    if i - 6 != EMPTY:
+    if board[i-6] != EMPTY:
       B[i] += 1
-    if i + 6 != EMPTY:
+    if board[i+6] != EMPTY:
       B[i] += 1
-    if i - 5 != EMPTY:
+    if board[i-5] != EMPTY:
       B[i] += 1
-    if i + 5 != EMPTY:
+    if board[i+5] != EMPTY:
       B[i] += 1
-    if i - 7 != EMPTY:
+    if board[i-7] != EMPTY:
       B[i] += 1
-    if i + 7 != EMPTY:
+    if board[i+7] != EMPTY:
       B[i] += 1
-  BB = sorted(B.items(), key=lambda x:x[1])
+  BB = sorted(B.items(), key=lambda x:-x[1])
   BBB = dict((x, y) for x, y in BB)
   BBB = list(BBB.keys())
 
   for i in C.keys():
-    if i - 1 != EMPTY:
-      C[i] += 1
-    if i + 1 != EMPTY:
-      C[i] += 1
-    if i - 6 != EMPTY:
-      C[i] += 1
-    if i + 6 != EMPTY:
-      C[i] += 1
-    if i - 5 != EMPTY:
-      C[i] += 1
-    if i + 5 != EMPTY:
-      C[i] += 1
-    if i - 7 != EMPTY:
-      C[i] += 1
-    if i + 7 != EMPTY:
-      C[i] += 1
-  CC = sorted(C.items(), key=lambda x:x[1])
+    C[i] += 3
+    if i == 1 or i == 4:
+      if board[i-1] != EMPTY:
+        C[i] += 1
+      if board[i+1] != EMPTY:
+        C[i] += 1
+      if board[i+6] != EMPTY:
+        C[i] += 1
+      if board[i+5] != EMPTY:
+        C[i] += 1
+      if board[i+7] != EMPTY:
+        C[i] += 1
+    if i == 6 or i == 24:
+      if board[i+1] != EMPTY:
+        C[i] += 1
+      if board[i-6] != EMPTY:
+        C[i] += 1
+      if board[i+6] != EMPTY:
+        C[i] += 1
+      if board[i-5] != EMPTY:
+        C[i] += 1
+      if board[i+7] != EMPTY:
+        C[i] += 1
+    if i == 11 or i == 29:
+      if board[i-1] != EMPTY:
+        C[i] += 1
+      if board[i-6] != EMPTY:
+        C[i] += 1
+      if board[i+6] != EMPTY:
+        C[i] += 1
+      if board[i+5] != EMPTY:
+        C[i] += 1
+      if board[i-7] != EMPTY:
+        C[i] += 1
+    if i == 31 or i == 34:
+      if board[i-1] != EMPTY:
+        C[i] += 1
+      if board[i+1] != EMPTY:
+        C[i] += 1
+      if board[i-6] != EMPTY:
+        C[i] += 1
+      if board[i-5] != EMPTY:
+        C[i] += 1
+      if board[i-7] != EMPTY:
+        C[i] += 1
+  CC = sorted(C.items(), key=lambda x:-x[1])
   CCC = dict((x, y) for x, y in CC)
   CCC = list(CCC.keys())
 
   for i in D.keys():
-    if i - 1 != EMPTY:
+    if board[i-1] != EMPTY:
       D[i] += 1
-    if i + 1 != EMPTY:
+    if board[i+1] != EMPTY:
       D[i] += 1
-    if i - 6 != EMPTY:
+    if board[i-6] != EMPTY:
       D[i] += 1
-    if i + 6 != EMPTY:
+    if board[i+6] != EMPTY:
       D[i] += 1
-    if i - 5 != EMPTY:
+    if board[i-5] != EMPTY:
       D[i] += 1
-    if i + 5 != EMPTY:
+    if board[i+5] != EMPTY:
       D[i] += 1
-    if i - 7 != EMPTY:
+    if board[i-7] != EMPTY:
       D[i] += 1
-    if i + 7 != EMPTY:
+    if board[i+7] != EMPTY:
       D[i] += 1
-  DD = sorted(D.items(), key=lambda x:x[1])
+  DD = sorted(D.items(), key=lambda x:-x[1])
   DDD = dict((x, y) for x, y in DD)
   DDD = list(DDD.keys())
 
