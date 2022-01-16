@@ -130,16 +130,8 @@ def game(player1, player2):
 
 # AI 用のインターフェース
   
-def nnmy_AI061(board, color):
-  first=[0,5,30,35]
-  second=[2,3,12,18,17,23,32,33]
-  third=[8,9,13,19,16,22,26,27]
-  fourth=[1,4,6,11,24,29,31.34,7,10,25,28]
-  order=[first,second,third,fourth]
-  for _ in  range(10):
-    for i in range(len(order)):
-      position=i
-      return position 
-    
+def my_AI(board, color): #おチビちゃんAI
+  for position in range(N*N):
+    if put_and_reverse(board, position, color):
+      return position
   return 0
-
