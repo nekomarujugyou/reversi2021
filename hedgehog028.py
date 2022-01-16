@@ -130,8 +130,122 @@ def game(player1, player2):
 
 # AI 用のインターフェース
   
-def my_AI(board, color): #おチビちゃんAI
-  for position in range(N*N):
-    if put_and_reverse(board, position, color):
-      return position
+def hedgehog028_AI(board,color):  
+  S = {0:0, 5:0, 30:0, 35:0}
+  A = {2:0, 3:0, 12:0, 17:0, 18:0, 23:0, 32:0, 33:0}
+  B = {8:0, 9:0, 13:0, 16:0, 19:0, 22:0, 26:0, 27:0}
+  C = {1:0, 4:0, 6:0, 11:0, 24:0, 29:0, 31:0, 34:0}
+  D = {7:0, 10:0, 25:0, 28:0}
+
+  for i in S.keys():
+    if i - 1 != EMPTY:
+      S[i] += 1
+    if i + 1 != EMPTY:
+      S[i] += 1
+    if i - 6 != EMPTY:
+      S[i] += 1
+    if i + 6 != EMPTY:
+      S[i] += 1
+    if i - 5 != EMPTY:
+      S[i] += 1
+    if i + 5 != EMPTY:
+      S[i] += 1
+    if i - 7 != EMPTY:
+      S[i] += 1
+    if i + 7 != EMPTY:
+      S[i] += 1
+  SS = sorted(S.items(), key=lambda x:x[1])
+  SSS = dict((x, y) for x, y in SS)
+  SSS = list(SSS.keys())
+  
+  for i in A.keys():
+    if i - 1 != EMPTY:
+      A[i] += 1
+    if i + 1 != EMPTY:
+      A[i] += 1
+    if i - 6 != EMPTY:
+      A[i] += 1
+    if i + 6 != EMPTY:
+      A[i] += 1
+    if i - 5 != EMPTY:
+      A[i] += 1
+    if i + 5 != EMPTY:
+      A[i] += 1
+    if i - 7 != EMPTY:
+      A[i] += 1
+    if i + 7 != EMPTY:
+      A[i] += 1
+    AA = sorted(A.items(), key=lambda x:x[1])
+    AAA = dict((x, y) for x, y in AA)
+    AAA = list(AAA.keys())    
+
+  for i in B.keys():
+    if i - 1 != EMPTY:
+      B[i] += 1
+    if i + 1 != EMPTY:
+      B[i] += 1
+    if i - 6 != EMPTY:
+      B[i] += 1
+    if i + 6 != EMPTY:
+      B[i] += 1
+    if i - 5 != EMPTY:
+      B[i] += 1
+    if i + 5 != EMPTY:
+      B[i] += 1
+    if i - 7 != EMPTY:
+      B[i] += 1
+    if i + 7 != EMPTY:
+      B[i] += 1
+  BB = sorted(B.items(), key=lambda x:x[1])
+  BBB = dict((x, y) for x, y in BB)
+  BBB = list(BBB.keys())
+
+  for i in C.keys():
+    if i - 1 != EMPTY:
+      C[i] += 1
+    if i + 1 != EMPTY:
+      C[i] += 1
+    if i - 6 != EMPTY:
+      C[i] += 1
+    if i + 6 != EMPTY:
+      C[i] += 1
+    if i - 5 != EMPTY:
+      C[i] += 1
+    if i + 5 != EMPTY:
+      C[i] += 1
+    if i - 7 != EMPTY:
+      C[i] += 1
+    if i + 7 != EMPTY:
+      C[i] += 1
+  CC = sorted(C.items(), key=lambda x:x[1])
+  CCC = dict((x, y) for x, y in CC)
+  CCC = list(CCC.keys())
+
+  for i in D.keys():
+    if i - 1 != EMPTY:
+      D[i] += 1
+    if i + 1 != EMPTY:
+      D[i] += 1
+    if i - 6 != EMPTY:
+      D[i] += 1
+    if i + 6 != EMPTY:
+      D[i] += 1
+    if i - 5 != EMPTY:
+      D[i] += 1
+    if i + 5 != EMPTY:
+      D[i] += 1
+    if i - 7 != EMPTY:
+      D[i] += 1
+    if i + 7 != EMPTY:
+      D[i] += 1
+  DD = sorted(D.items(), key=lambda x:x[1])
+  DDD = dict((x, y) for x, y in DD)
+  DDD = list(DDD.keys())
+
+  X = SSS + AAA + BBB + CCC + DDD
+  for _ in range(N*N):  
+    for i in X:
+      position=i
+      if put_and_reverse(board,position,color):
+        return position
   return 0
