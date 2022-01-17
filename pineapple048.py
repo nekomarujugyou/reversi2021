@@ -141,6 +141,7 @@ def my_AI(board, color): #おチビちゃんAI
 import random
 
 def Pine_AI(board,color):
+  import random
   CanPutlist=[]
   list1 = []
   for position in range(N*N):
@@ -155,7 +156,7 @@ def Pine_AI(board,color):
       return(random.choice(list1))
 
     #優先度2番目
-  elif (2 in CanPutlist)or(3 in CanPutlist)or(12 in CanPutlist)or(17 in CanPutlist)or(18 in CanPutlist)or(23 in CanPutlist)or(32 in CanPutlist)or(33 in CanPutlist) :
+  if (2 in CanPutlist)or(3 in CanPutlist)or(12 in CanPutlist)or(17 in CanPutlist)or(18 in CanPutlist)or(23 in CanPutlist)or(32 in CanPutlist)or(33 in CanPutlist) :
       if 2 in CanPutlist:list1.append(2)
       if 3 in CanPutlist:list1.append(3)
       if 12 in CanPutlist:list1.append(12)
@@ -167,7 +168,7 @@ def Pine_AI(board,color):
       return(random.choice(list1))
 
     #優先度3番目
-  elif (8 in CanPutlist)or(9 in CanPutlist)or(13 in CanPutlist)or(16 in CanPutlist)or(19 in CanPutlist)or(22 in CanPutlist)or(26 in CanPutlist)or(27 in CanPutlist) :
+  if (8 in CanPutlist)or(9 in CanPutlist)or(13 in CanPutlist)or(16 in CanPutlist)or(19 in CanPutlist)or(22 in CanPutlist)or(26 in CanPutlist)or(27 in CanPutlist) :
       if 8 in CanPutlist:list1.append(8)
       if 9 in CanPutlist:list1.append(9)
       if 13 in CanPutlist:list1.append(13)
@@ -179,7 +180,7 @@ def Pine_AI(board,color):
       return(random.choice(list1))
 
     #優先度4番目
-  elif (1 in CanPutlist)or(4 in CanPutlist)or(6 in CanPutlist)or(11 in CanPutlist)or(24 in CanPutlist)or(29 in CanPutlist)or(31 in CanPutlist)or(34 in CanPutlist):
+  if (1 in CanPutlist)or(4 in CanPutlist)or(6 in CanPutlist)or(11 in CanPutlist)or(24 in CanPutlist)or(29 in CanPutlist)or(31 in CanPutlist)or(34 in CanPutlist):
       if 1 in CanPutlist:list1.append(1)
       if 4 in CanPutlist:list1.append(4)
       if 6 in CanPutlist:list1.append(6)
@@ -190,14 +191,14 @@ def Pine_AI(board,color):
       if 34 in CanPutlist:list1.append(34)
       return(random.choice(list1))
 
-  elif (7 in CanPutlist)or(10 in CanPutlist)or(25 in CanPutlist)or(28 in CanPutlist) :
+  if (7 in CanPutlist)or(10 in CanPutlist)or(25 in CanPutlist)or(28 in CanPutlist) :
       if 7 in CanPutlist:list1.append(7)
       if 10 in CanPutlist:list1.append(10)
       if 25 in CanPutlist:list1.append(25)
       if 28 in CanPutlist:list1.append(28)
       return(random.choice(list1))
 
-  else:return 0
+  return 0
 
 #まあfor文で繰り返し書いたほうが楽だなあとは思ったのですが...
 
