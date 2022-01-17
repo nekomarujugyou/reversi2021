@@ -45,7 +45,6 @@ def show_board(board):
   for pair in zip(STONE, counts):
     print(pair, end=' ')
   print()
-  return counts[1], counts[2]
 
 
 # (x,y) が盤面上か判定する
@@ -110,23 +109,23 @@ def can_play(board, color):
 
 def game(player1, player2):
 	board = init_board()
-	#show_board(board)
+	show_board(board)
 	on_gaming = True  # 　ゲームが続行できるか？
 	while on_gaming:
 		on_gaming = False  # 　いったん、ゲーム終了にする
 		if can_play(board, BLACK):
 			# player1 に黒を置かせる
 			position = player1(board[:], BLACK)
-			#show_board(board)
+			show_board(board)
 			# 黒が正しく置けたら、ゲーム続行
 			on_gaming = put_and_reverse(board, position, BLACK)
 		if can_play(board, WHITE):
 			# player1 に白を置かせる
 			position = player2(board[:], WHITE)
-			#show_board(board)
+			show_board(board)
 			# 白が置けたらゲーム続行
 			on_gaming = put_and_reverse(board, position, WHITE)
-	return show_board(board)  # 最後の結果を表示!
+	show_board(board)  # 最後の結果を表示!
 
 # AI 用のインターフェース
   

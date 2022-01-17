@@ -1,3 +1,4 @@
+
 #
 # オセロ（リバーシ） 6x6
 #
@@ -45,7 +46,6 @@ def show_board(board):
   for pair in zip(STONE, counts):
     print(pair, end=' ')
   print()
-  return counts[1], counts[2]
 
 
 # (x,y) が盤面上か判定する
@@ -110,28 +110,46 @@ def can_play(board, color):
 
 def game(player1, player2):
 	board = init_board()
-	#show_board(board)
+	show_board(board)
 	on_gaming = True  # 　ゲームが続行できるか？
 	while on_gaming:
 		on_gaming = False  # 　いったん、ゲーム終了にする
 		if can_play(board, BLACK):
 			# player1 に黒を置かせる
 			position = player1(board[:], BLACK)
-			#show_board(board)
+			show_board(board)
 			# 黒が正しく置けたら、ゲーム続行
 			on_gaming = put_and_reverse(board, position, BLACK)
 		if can_play(board, WHITE):
 			# player1 に白を置かせる
 			position = player2(board[:], WHITE)
-			#show_board(board)
+			show_board(board)
 			# 白が置けたらゲーム続行
 			on_gaming = put_and_reverse(board, position, WHITE)
-	return show_board(board)  # 最後の結果を表示!
+	show_board(board)  # 最後の結果を表示!
 
 # AI 用のインターフェース
   
 def my_AI(board, color): #おチビちゃんAI
   for position in range(N*N):
+    if put_and_reverse(board, position, color):
+      return position
+  return 0
+
+
+def point_AI(board, color):
+  point = [20,-10,0,0,-10,20,
+         -10,-5,-2,-2,-5,-10,
+         0,-2,0,0,-2,0,
+         0,-2,0,0,-2,0,
+         -10,-5,-2,-2,-5,-10,
+         20,-10,0,0,-10,20]
+  arr=[]
+  for pos, val in enumerate(point):
+    arr.append([val,pos])
+  arr.sort(reverse=True)
+  for i in range(len(arr)):
+    position = arr[i][1]
     if put_and_reverse(board, position, color):
       return position
   return 0

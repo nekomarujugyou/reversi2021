@@ -45,7 +45,6 @@ def show_board(board):
   for pair in zip(STONE, counts):
     print(pair, end=' ')
   print()
-  return counts[1], counts[2]
 
 
 # (x,y) が盤面上か判定する
@@ -110,28 +109,67 @@ def can_play(board, color):
 
 def game(player1, player2):
 	board = init_board()
-	#show_board(board)
+	show_board(board)
 	on_gaming = True  # 　ゲームが続行できるか？
 	while on_gaming:
 		on_gaming = False  # 　いったん、ゲーム終了にする
 		if can_play(board, BLACK):
 			# player1 に黒を置かせる
 			position = player1(board[:], BLACK)
-			#show_board(board)
+			show_board(board)
 			# 黒が正しく置けたら、ゲーム続行
 			on_gaming = put_and_reverse(board, position, BLACK)
 		if can_play(board, WHITE):
 			# player1 に白を置かせる
 			position = player2(board[:], WHITE)
-			#show_board(board)
+			show_board(board)
 			# 白が置けたらゲーム続行
 			on_gaming = put_and_reverse(board, position, WHITE)
-	return show_board(board)  # 最後の結果を表示!
-
-# AI 用のインターフェース
+	show_board(board)  # 最後の結果を表示!
   
+  #ミニマックス法
+  def minMax(self, depth, max_depth, pos_list, gain_list):  # depth > 0
+        value = []
+        next_value = []
+        next_pos_list = []
+        next_gain_list = []
+        self.backUpAllState(self.state_storage_list[depth])
+        for pos in pos_list:
+            ret =  self.putComputerStone(pos, False)
+            next_pos_list, next_gain_list = self.scanPuttableCell()
+            if (depth > 1):
+                next_value = self.minMax(depth-1, max_depth, next_pos_list, next_gain_list)
+                if len(next_value) == 0:
+                    value.append(0)
+                elif (max_depth - depth) % 2 == 0:
+                    value.append(min(next_value))
+                else:
+                    value.append(max(next_value))
+            else:
+                if len(next_gain_list) == 0:
+                    value.append(0)
+                elif (max_depth - depth) % 2 == 0:
+                    value.append(min(next_gain_list))
+                else:
+                    value.append(max(next_gain_list))
+
+            self.restoreAllState(self.state_storage_list[depth])
+
+        return value
+        
+# AI 用のインターフェース  
 def my_AI(board, color): #おチビちゃんAI
-  for position in range(N*N):
-    if put_and_reverse(board, position, color):
-      return position
+  for minMax in range(N*N):
+    if put_and_reverse(board, minMax, color):
+      return minMax
   return 0
+ 
+import random
+def random_AI(board, color):
+  for _ in range(100):
+    position = random.randint(0, N*N-1)
+    if put_and_reverse(board[:], position, color):
+      return position ## おく位置を決めて返す
+  return 0
+
+game(random_AI,my_AI)

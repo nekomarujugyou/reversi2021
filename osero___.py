@@ -45,7 +45,6 @@ def show_board(board):
   for pair in zip(STONE, counts):
     print(pair, end=' ')
   print()
-  return counts[1], counts[2]
 
 
 # (x,y) が盤面上か判定する
@@ -81,7 +80,7 @@ DIR = [
     (-1, 1), (0, 1), (1, 1),
 ]
 
-def put_and_reverse(board, position, color):
+def put_and_reverse(board, position, color): 
   if board[position] != EMPTY:
   	return False
   board[position] = color
@@ -110,28 +109,63 @@ def can_play(board, color):
 
 def game(player1, player2):
 	board = init_board()
-	#show_board(board)
+	show_board(board)
 	on_gaming = True  # 　ゲームが続行できるか？
 	while on_gaming:
 		on_gaming = False  # 　いったん、ゲーム終了にする
 		if can_play(board, BLACK):
 			# player1 に黒を置かせる
 			position = player1(board[:], BLACK)
-			#show_board(board)
+			show_board(board)
 			# 黒が正しく置けたら、ゲーム続行
 			on_gaming = put_and_reverse(board, position, BLACK)
 		if can_play(board, WHITE):
 			# player1 に白を置かせる
 			position = player2(board[:], WHITE)
-			#show_board(board)
+			show_board(board)
 			# 白が置けたらゲーム続行
 			on_gaming = put_and_reverse(board, position, WHITE)
-	return show_board(board)  # 最後の結果を表示!
+	show_board(board)  # 最後の結果を表示!
 
 # AI 用のインターフェース
-  
-def my_AI(board, color): #おチビちゃんAI
-  for position in range(N*N):
+##寒色優先（青、水色、白、ピンク、赤）
+YUSEN2=[0,5,30,35,2,3,17,23,12,18,32,33,9,16,8,15,22,14,21,13,20,27,19,26,4,11,1,29,6,34,24,31,10,7,28,25]
+def my_AI2(board, color): #おチビちゃんAI
+  for i in range(N*N):
+    position =YUSEN2[i]
     if put_and_reverse(board, position, color):
       return position
   return 0
+
+#YUSEN=[0,5,30,35,2,3,12,17,18,23,32,33,8,9,13,14,15,16,19,20,21,22,26,27,1,4,6,11,24,29,31,34,7,10,25,28]
+#def my_AI(board, color): #おチビちゃんAI
+  #for i in range(N*N):
+    #position =YUSEN[i]
+     #if put_and_reverse(board, position, color):
+      #return position
+  #return 0
+
+
+
+#STONE = ['🟩', '⚫', '⚪']
+#board = init_board()
+#show_board(board)
+
+#def user(board, color):
+  #for _ in range(10):
+    #position = int(input(STONE[color]+'をどこに置きますか？'))
+     # おけるかどうか確認する
+    #if put_and_reverse(board[:], position, color):
+      #return position ## おく位置を決めて返す
+    #print('そこには置けません！')
+  #return 0 #
+
+#import random
+
+#def random_AI(board, color):
+  #for _ in range(100):
+    #position = random.randint(0, N*N-1)
+    #if put_and_reverse(board[:], position, color):
+      #return position ## おく位置を決めて返す
+  #return 0
+#game(my_AI2,random_AI)
