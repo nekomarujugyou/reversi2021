@@ -144,7 +144,7 @@ def Pine_AI(board,color):
   CanPutlist=[]
   list1 = []
   for position in range(N*N):
-    if put_and_reverse(board, position, color):
+    if put_and_reverse(board[:], position, color):
       CanPutlist.append(position)
 
   if (0 in CanPutlist)or(5 in CanPutlist)or(30 in CanPutlist)or(35 in CanPutlist) :
