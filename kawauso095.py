@@ -178,4 +178,3 @@ def kawauso_AI(board, color):
       return position
   return 0
  
-game(kawauso_AI,my_AI2)A=[5,30,0,35,3,17,2,18,12,23,32,33,13,27,22,26,16,19,8,9,4,34,31,1,11,6,24,29,10,25,28,7]
